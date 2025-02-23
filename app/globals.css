@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Chicago";
+  src: url("/fonts/ChicagoFLF.ttf") format("truetype");
+}
+
+.font-chicago {
+  font-family: "Chicago", sans-serif;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e2e2e2;
+  border: 2px solid #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #999999;
+  border: 2px solid #000000;
+}
+
+/* Retro selection style */
+::selection {
+  background: #000000;
+  color: #ffffff;
+}
+
+@layer base {}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
