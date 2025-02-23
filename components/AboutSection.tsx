@@ -16,13 +16,13 @@ export default function AboutSection() {
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-4">
           <p className="font-mono leading-relaxed">
-            Hey there! I'm George, an indie developer with a passion for creating technology that makes a positive
-            impact on our planet. Through FrontForumFocus, I'm helping organizations track and improve their
+            Hey there! I&apos;m George, an indie developer with a passion for creating technology that makes a positive
+            impact on our planet. Through frontforumfocus, I&apos;m helping organizations track and improve their
             sustainability efforts.
           </p>
           <p className="font-mono leading-relaxed">
-            When I'm not coding, you'll find me exploring nature, recording podcast episodes, or brainstorming new ways
-            to use tech for environmental good.
+            When I&apos;m not coding, you&apos;ll find me exploring nature, recording podcast episodes, or brainstorming new ways
+            to use tech for  good.
           </p>
         </div>
 

@@ -7,12 +7,12 @@ import { useState, useEffect } from "react"
 const metrics = [
   {
     label: "Organizations Helped",
-    value: 50,
+    value: 1 ,
     icon: "🏢",
   },
   {
-    label: "CO2 Tracked (tons)",
-    value: 1000,
+    label: "Activities Tracked ",
+    value: 17 ,
     icon: "🌱",
   },
   {
