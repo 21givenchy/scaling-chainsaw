@@ -12,8 +12,8 @@ const socials = [
   },
   {
     icon: Twitter,
-    label: "Twitter",
-    href: "https://twitter.com/21givenchy",
+    label: "X",
+    href: "https://x.com/21givenchy",
     color: "hover:text-[#1DA1F2]",
   },
   {
