@@ -6,6 +6,7 @@ import BlinkingCursor from "./BlinkingCursor"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
 
+
 export default function PixelHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -71,6 +72,8 @@ export default function PixelHero() {
                 <BlinkingCursor />
               </p>
             </motion.div>
+
+           
           </div>
         </div>
       </motion.div>
