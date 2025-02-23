@@ -17,8 +17,16 @@ export default function AboutSection() {
         <div className="space-y-4">
           <p className="font-mono leading-relaxed">
             Hey there! I&apos;m George, an indie developer with a passion for creating technology that makes a positive
-            impact on our planet. Through frontforumfocus, I&apos;m helping organizations track and improve their
-            sustainability efforts.
+            impact on our planet. Through{" "}
+            <a
+              href="https://frontforumfocus.up.railway.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 decoration-2 decoration-green-400 hover:text-green-400 transition-colors"
+            >
+              frontforumfocus
+            </a>
+            , I&apos;m helping organizations track and improve their sustainability efforts.
           </p>
           <p className="font-mono leading-relaxed">
             When I&apos;m not coding, you&apos;ll find me exploring nature, recording podcast episodes, or brainstorming new ways

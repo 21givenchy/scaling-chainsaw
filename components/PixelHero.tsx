@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import BlinkingCursor from "./BlinkingCursor"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-
+import profile from "@/public/picofme.png"
 
 
 export default function PixelHero() {
@@ -46,7 +46,7 @@ export default function PixelHero() {
           >
             <div className="absolute -inset-2 bg-green-400/50 rounded-full blur-md group-hover:bg-green-400/70 transition-all" />
             <Avatar className="size-28 border-4 border-green-400 pixelated hover:scale-105 transition-transform">
-              <AvatarImage src="https://github.com/21givenchy.png" />
+              <AvatarImage src={profile.src} />
               <AvatarFallback>GK</AvatarFallback>
             </Avatar>
           </motion.div>

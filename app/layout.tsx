@@ -3,8 +3,8 @@ import "./globals.css"
 import RetroBootSequence from "@/components/RetroBootSequence"
 
 export const metadata = {
-  title: "George Karani - Sustainable Tech Developer",
-  description: "Building tools for a better planet. Founder of FrontForumFocus.",
+  title: "George Karani -  SWE & founder",
+  description: "Building tools for a better planet. Founder of frontforumfocus.",
 }
 
 export default function RootLayout({
