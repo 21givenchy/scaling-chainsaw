@@ -6,18 +6,19 @@ import { Play, Pause, SkipBack, SkipForward, Volume2 } from "lucide-react"
 
 declare global {
   interface Window {
-    onSpotifyIframeApiReady: (IFrameAPI: any) => void
+    onSpotifyIframeApiReady: (IFrameAPI: unknown) => void
   }
 }
 
 interface SpotifyController {
   togglePlay: () => Promise<void>
   destroy: () => void
+  addListener: (event: string, callback: (e: { data: { isPaused: boolean } }) => void) => void
 }
 
 export default function PodcastPlayer() {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [progress, setProgress] = useState(30)
+  const [progress, ] = useState(30)
   const [controller, setController] = useState<SpotifyController | null>(null)
   const iframeRef = useRef<HTMLDivElement>(null)
   const EPISODE_ID = "1S5RsW74i7H4QrqCgVrojK"

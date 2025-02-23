@@ -6,7 +6,8 @@ export default function SoundEffects() {
   const audioContextRef = useRef<AudioContext | null>(null)
 
   useEffect(() => {
-    audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)()
+    audioContextRef.current = new (window.AudioContext || 
+      (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext)()
 
     const playRetroSound = () => {
       if (!audioContextRef.current) return

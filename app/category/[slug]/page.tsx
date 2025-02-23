@@ -2,7 +2,14 @@ import Link from "next/link"
 import { posts } from "../../data/posts"
 import { notFound } from "next/navigation"
 
-export default function CategoryPage({ params }: { params: { slug: string } }) {
+
+interface Props {
+  params: {
+    slug: string
+  }
+}
+
+export default function CategoryPage({ params }: Props) {
   const category = params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
   const categoryPosts = posts.filter((post) => post.category.toLowerCase() === params.slug)
 

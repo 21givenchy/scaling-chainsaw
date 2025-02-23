@@ -1,10 +1,11 @@
 import { Clock } from "lucide-react"
+import Image from "next/image"
 
 export default function MenuBar() {
   return (
     <div className="fixed top-0 left-0 right-0 h-6 bg-[#999999] border-b-2 border-black flex items-center px-4 z-50">
       <div className="flex items-center gap-4">
-        <img src="/apple-logo.png" alt="Apple" className="h-4 w-4" />
+        <Image src="/logo.png" alt="Apple" className="h-4 w-4" />
         <span className="font-chicago text-sm">File</span>
         <span className="font-chicago text-sm">Edit</span>
         <span className="font-chicago text-sm">View</span>
