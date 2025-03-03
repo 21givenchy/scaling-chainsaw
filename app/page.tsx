@@ -6,6 +6,8 @@ import SocialLinks from "@/components/SocialLinks"
 import FloatingPixels from "@/components/FloatingPixels"
 import SoundEffects from "@/components/SoundEffects"
 import ImpactCounter from "@/components/ImpactCounter"
+import { Badge } from "@/components/ui/badge"
+import { BlurFade } from "@/components/magicui/blur-fade"
 
 
 export default function Home() {
@@ -33,6 +35,33 @@ export default function Home() {
         <section className="mt-16">
           <AboutSection />
         </section>
+
+           <section id="skills">
+        <div className="flex flex-col gap-y-3">
+          <BlurFade>
+            <h2 className="text-xl font-bold">Skills</h2>
+          </BlurFade>
+          <div className="flex flex-wrap gap-1 relative">
+            {[
+              'React',
+              'Next.js',
+              'TypeScript',
+              'Node.js',
+              'Python',
+              'Go',
+              'Supabase',
+              'Docker',
+              'Kubernetes',
+              'React Native',
+              'C++'
+            ].map((skill, id) => (
+              <BlurFade key={skill} delay={id * 0.1}>
+                <Badge>{skill}</Badge>
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </section>
 
         <section className="mt-16 grid md:grid-cols-2 gap-8">
           <PodcastPlayer />
