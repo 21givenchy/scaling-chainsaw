@@ -2,19 +2,18 @@ import Link from "next/link"
 import { posts } from "../../data/posts"
 import { notFound } from "next/navigation"
 
-
-interface Props {
-  params: {
-    slug: string
-  }
-}
-
-export default function CategoryPage({ params }: Props) {
-  const category = params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
-  const categoryPosts = posts.filter((post) => post.category.toLowerCase() === params.slug)
+// Use a server component pattern
+export default async function CategoryPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const slug = params.slug;
+  const category = slug.charAt(0).toUpperCase() + slug.slice(1);
+  const categoryPosts = posts.filter((post) => post.category.toLowerCase() === slug);
 
   if (categoryPosts.length === 0) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -36,6 +35,12 @@ export default function CategoryPage({ params }: Props) {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
+export function generateStaticParams() {
+  const categories = [...new Set(posts.map(post => post.category.toLowerCase()))];
+  return categories.map(category => ({
+    slug: category,
+  }));
+}

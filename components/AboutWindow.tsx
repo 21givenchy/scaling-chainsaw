@@ -1,14 +1,15 @@
 import RetroWindow from "./RetroWindow"
 import { TreeDeciduous, Heart, Code2 } from "lucide-react"
+import Image from "next/image"
 
 export default function AboutWindow() {
   return (
     <RetroWindow title="About George">
       <div className="p-6 space-y-6">
         <div className="flex items-start gap-6">
-          <img src="/profile.jpg" alt="George Karani" className="w-32 h-32 border-2 border-black" />
+          <Image src="/george.jpeg" alt="George Karani" className="w-32 h-32 border-2 border-black" />
           <div className="space-y-4">
-            <h2 className="font-chicago text-xl">Hello, I'm George 👋</h2>
+            <h2 className="font-chicago text-xl">Hello, I&apos;m George 👋</h2>
             <p className="font-chicago">
               An indie developer passionate about leveraging technology to drive positive environmental impact. I build
               tools that help organizations and individuals track and improve their sustainability efforts.

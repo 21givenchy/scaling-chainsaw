@@ -4,16 +4,29 @@ import { useEffect, useState, useRef } from "react"
 import { motion } from "framer-motion"
 import { Play, Pause, SkipBack, SkipForward, Volume2 } from "lucide-react"
 
+// Fix 1: Define proper type for IFrameAPI
+interface SpotifyIframeAPI {
+  createController: (
+    element: HTMLElement,
+    options: { uri: string; width: string; height: string },
+    callback: (controller: SpotifyController) => void
+  ) => void
+}
+
 declare global {
   interface Window {
-    onSpotifyIframeApiReady: (IFrameAPI: unknown) => void
+    onSpotifyIframeApiReady: (IFrameAPI: SpotifyIframeAPI) => void
   }
 }
 
+// Fix 2: Add addListener method to SpotifyController interface
 interface SpotifyController {
   togglePlay: () => Promise<void>
   destroy: () => void
-  addListener: (event: string, callback: (e: { data: { isPaused: boolean } }) => void) => void
+  addListener: (
+    event: string,
+    callback: (e: { data: { isPaused: boolean } }) => void
+  ) => void
 }
 
 export default function PodcastPlayer() {
@@ -41,7 +54,8 @@ export default function PodcastPlayer() {
           setController(controller)
           controller.addListener(
             'playback_update',
-            (e: any) => setIsPlaying(e.data.isPaused)
+            // Fix 3: Properly type the event parameter
+            (e: { data: { isPaused: boolean } }) => setIsPlaying(e.data.isPaused)
           )
         }
         
@@ -55,7 +69,8 @@ export default function PodcastPlayer() {
       document.body.removeChild(script)
       controller?.destroy()
     }
-  }, [])
+  // Fix 4: Add controller to dependency array
+  }, [controller])
 
   const handlePlayPause = () => {
     controller?.togglePlay()
@@ -76,7 +91,7 @@ export default function PodcastPlayer() {
       <div className="space-y-4">
         <div className="bg-gray-900 p-4 rounded">
           <h3 className="font-pixel text-sm mb-2">Now Playing</h3>
-          <p className="font-mono text-green-400">Stargazing Africa: The Journey to a Space Career</p>
+          <p className="font-mono text-green-400">Sustainable Tech: Building for Impact</p>
         </div>
 
         <div className="flex items-center justify-center gap-4">

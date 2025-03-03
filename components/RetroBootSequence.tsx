@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import profile from "@/public/logo.png"
 
 export default function RetroBootSequence() {
   const [booted, setBooted] = useState(false)
@@ -27,7 +28,7 @@ export default function RetroBootSequence() {
   return (
     <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
       <div className="max-w-md w-full space-y-4 p-4">
-        <Image src="/logo.png" alt="F^3" className="w-16 h-16 mx-auto" />
+        <Image src={profile} alt="F^3" className="w-16 h-16 mx-auto" />
         <div className="h-2 bg-[#666666] border border-[#999999]">
           <div className="h-full bg-[#999999]" style={{ width: `${progress}%` }} />
         </div>
