@@ -8,6 +8,9 @@ interface ThreadsProps {
   enableMouseInteraction?: boolean;
 }
 
+const CANVAS_HEIGHT = 600;
+const CANVAS_TOP_OFFSET = -100;
+
 export default function Threads({
   amplitude = 50,
   distance = 100,
@@ -27,7 +30,7 @@ export default function Threads({
     // Set canvas size
     const updateCanvasSize = () => {
       canvas.width = window.innerWidth;
-      canvas.height = 600;
+      canvas.height = CANVAS_HEIGHT;
     };
     updateCanvasSize();
     window.addEventListener('resize', updateCanvasSize);
@@ -116,10 +119,10 @@ export default function Threads({
       ref={canvasRef}
       style={{
         position: 'absolute',
-        top: '-100px',
+        top: `${CANVAS_TOP_OFFSET}px`,
         left: 0,
         width: '100%',
-        height: '600px',
+        height: `${CANVAS_HEIGHT}px`,
         pointerEvents: 'none',
         zIndex: 1,
       }}

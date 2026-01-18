@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, ReactNode } from 'react';
-import { motion, useScroll, useSpring, useTransform, useVelocity } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface ScrollVelocityProps {
   children: ReactNode;
@@ -19,21 +19,6 @@ export default function ScrollVelocity({
     target: targetRef,
     offset: ['start end', 'end start'],
   });
-
-  const scrollVelocity = useVelocity(scrollYProgress);
-  const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400,
-  });
-
-  useTransform(
-    smoothVelocity,
-    [0, 1000],
-    [0, 5],
-    {
-      clamp: false,
-    }
-  );
 
   const y = useTransform(
     scrollYProgress,

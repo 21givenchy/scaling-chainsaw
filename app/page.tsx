@@ -179,7 +179,7 @@ export default function Home() {
         {/* Hero Section with TextPressure */}
         <section ref={heroRef} className="relative px-4 sm:px-6 lg:px-8">
           {/* Desktop version */}
-          <div className="hidden md:flex justify-center items-center" style={{ minHeight: '400px', maxWidth: '1200px', marginTop: '340px', margin: '340px auto 0' }}>
+          <div className="hidden md:flex justify-center items-center min-h-[400px] max-w-[1200px] mt-[340px] mx-auto">
             <TextPressure
               text="21GIVENCHY"
               minFontSize={320}
