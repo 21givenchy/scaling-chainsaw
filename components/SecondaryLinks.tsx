@@ -6,7 +6,7 @@ const secondaryLinks = [
   { href: "https://twitter.com/21givenchy", label: "Twitter", external: true },
   { href: "https://instagram.com/21givenchy", label: "Instagram", external: true },
   { href: "https://linkedin.com/in/georgekarani", label: "LinkedIn", external: true },
-  { href: "https://github.com/21givenchy", label: "Github", external: true },
+  { href: "https://github.com/21givenchy", label: "GitHub", external: true },
   { href: "mailto:george@example.com", label: "Email", external: false },
   { href: "/cv", label: "CV", external: false },
 ]
