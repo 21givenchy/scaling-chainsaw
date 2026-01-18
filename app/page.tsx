@@ -1,73 +1,76 @@
-import PixelHero from "@/components/PixelHero"
-import ProjectCards from "@/components/ProjectCards"
-import AboutSection from "@/components/AboutSection"
-import PodcastPlayer from "@/components/PodcastPlayer"
-import SocialLinks from "@/components/SocialLinks"
+'use client';
+
+import { useEffect, useRef } from 'react';
+import TextPressure from "@/components/TextPressure"
+import Threads from "@/components/Threads"
 import FloatingPixels from "@/components/FloatingPixels"
 import SoundEffects from "@/components/SoundEffects"
-import ImpactCounter from "@/components/ImpactCounter"
-import { Badge } from "@/components/ui/badge"
-import { BlurFade } from "@/components/magicui/blur-fade"
-
+import gsap from 'gsap';
 
 export default function Home() {
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Hero text animation with GSAP
+    if (heroRef.current) {
+      gsap.fromTo(
+        heroRef.current,
+        {
+          opacity: 0,
+          y: 80,
+          filter: 'blur(10px)',
+        },
+        {
+          opacity: 1,
+          y: 0,
+          filter: 'blur(0px)',
+          duration: 1.2,
+          ease: 'power2.out',
+          delay: 0.5,
+        }
+      );
+    }
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-900 text-green-400">
+    <div className="h-screen w-screen bg-[#000000] text-green-400 relative overflow-hidden">
+      {/* Threads background */}
+      <Threads amplitude={50} distance={100} enableMouseInteraction={true} />
+      
       <FloatingPixels />
       <SoundEffects />
 
-      <main className="max-w-4xl mx-auto px-4 py-4">
-          
-        <PixelHero />
-
-        <section className="mt-16">
-          <h2 className="text-2xl font-pixel mb-8 flex items-center gap-2">
-            <span className="inline-block w-4 h-4 bg-green-400" />
-            Impact Projects
-          </h2>
-          <ProjectCards />
-        </section>
-
-        <section className="mt-16">
-          <ImpactCounter />
-        </section>
-
-        <section className="mt-16">
-          <AboutSection />
-        </section>
-
-           <section id="skills">
-        <div className="flex flex-col gap-y-3">
-          <BlurFade>
-            <h2 className="text-xl font-bold">Skills</h2>
-          </BlurFade>
-          <div className="flex flex-wrap gap-1 relative">
-            {[
-              'React',
-              'Next.js',
-              'TypeScript',
-              'Node.js',
-              'Python',
-              'Go',
-              'Supabase',
-              'Docker',
-              'Kubernetes',
-              'React Native',
-              'C++'
-            ].map((skill, id) => (
-              <BlurFade key={skill} delay={id * 0.1}>
-                <Badge>{skill}</Badge>
-              </BlurFade>
-            ))}
+      {/* Hero Section with TextPressure - Centered */}
+      <div className="h-full w-full flex items-center justify-center relative z-10">
+        <section ref={heroRef} className="relative px-4 sm:px-6 lg:px-8">
+          {/* Desktop version */}
+          <div className="hidden md:flex justify-center items-center">
+            <TextPressure
+              text="21GIVENCHY"
+              minFontSize={320}
+              textColor="#FFFFFF"
+            />
           </div>
-        </div>
-      </section>
 
-        <section className="mt-16 grid md:grid-cols-2 gap-8">
-          <PodcastPlayer />
-          <SocialLinks />
+          {/* Mobile version */}
+          <div className="md:hidden flex flex-col justify-center items-center gap-4">
+            <div>
+              <TextPressure
+                text="21GIVEN"
+                minFontSize={100}
+                textColor="#FFFFFF"
+              />
+            </div>
+            <div>
+              <TextPressure
+                text="CHY"
+                minFontSize={100}
+                textColor="#FFFFFF"
+              />
+            </div>
+          </div>
         </section>
-      </main>
+      </div>
     </div>
   )
 }
