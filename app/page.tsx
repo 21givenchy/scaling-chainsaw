@@ -33,7 +33,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="h-screen w-screen bg-[#000000] text-white relative overflow-hidden">
+    <div className="h-screen w-screen bg-[#000000] text-green-400 relative overflow-hidden">
       {/* Threads background */}
       <Threads amplitude={50} distance={100} enableMouseInteraction={true} />
       

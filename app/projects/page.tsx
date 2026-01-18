@@ -33,7 +33,7 @@ export default function ProjectsPage() {
   }, []);
 
   return (
-    <div className="h-screen w-screen bg-gray-900 text-green-400 overflow-hidden">
+    <div className="h-screen w-screen bg-[#000000] text-green-400 overflow-hidden">
       <FloatingPixels />
       <SoundEffects />
 

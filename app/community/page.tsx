@@ -29,7 +29,7 @@ export default function CommunityPage() {
   }, []);
 
   return (
-    <div className="h-screen w-screen bg-gray-900 text-green-400 overflow-hidden flex items-center justify-center">
+    <div className="h-screen w-screen bg-[#000000] text-green-400 overflow-hidden flex items-center justify-center">
       <FloatingPixels />
       <SoundEffects />
 
