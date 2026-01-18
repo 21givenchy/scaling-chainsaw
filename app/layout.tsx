@@ -5,7 +5,7 @@ import Header from "@/components/Header"
 // import RetroBootSequence from "@/components/RetroBootSequence"
 
 export const metadata = {
-  title: "George Karani -  SWE & founder",
+  title: "George Karani – SWE & founder",
   description: "Building tools for a better planet. Founder of frontforumfocus.",
 }
 
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="grid grid-rows-[auto_1fr] min-h-screen">
+      <body className="h-screen overflow-hidden">
         <Providers>
           {/* <RetroBootSequence /> */}
           <Header />

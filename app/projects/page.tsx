@@ -2,26 +2,81 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Badge } from "@/components/ui/badge"
 import { BlurFade } from "@/components/magicui/blur-fade"
 import gsap from 'gsap';
 
-const workItems = [
+const projects = [
   {
-    title: "frontforumfocus (greta)",
-    description: "mission OS for founders and teams to align their day with their mission and see live impact.",
-    href: "https://frontforumfocus.com",
+    title: "frontforumfocus",
+    subtitle: "impact tools for founders and teams",
+    description: [
+      "Built and shipped a platform that helps founders track alignment between daily work and mission, with tools like Greta and impact dashboards.",
+      "Focused on sustainability, people, and planet metrics, turning them into investor-ready narratives and reports."
+    ],
+    role: "founder, product, full-stack dev",
+    link: "https://frontforumfocus.com",
+    linkText: "frontforumfocus.com",
   },
   {
-    title: "community & podcasts",
-    description: "conversations with builders on purpose, impact, and the reality of shipping from the continent.",
-    href: "/podcast",
+    title: "Greta",
+    subtitle: "mission OS for founders",
+    description: [
+      "A web app that lets founders tag tasks to their core mission and OKRs, then surfaces simple, honest insights on where their time is going.",
+      "Built experiments with agents (e.g. greta-productivity-agent) to observe work and give feedback in real time."
+    ],
+    role: "product design, TypeScript/Next.js, AI integration",
+    link: "https://greta-v2.vercel.app",
+    linkText: "greta-v2.vercel.app",
+    repos: ["greta-productivity-agent", "greta-v1"],
   },
   {
-    title: "experiments",
-    description: "small AI/product tests around focus, storytelling, and impact (agents, dashboards, niche apps).",
-    href: "/projects",
+    title: "Impact Dash",
+    subtitle: "AI impact analytics",
+    description: [
+      "An AI-powered dashboard to generate impact reports and visualise how work maps to outcomes on people and planet.",
+      "Built around flexible metrics so founders and investors can share a common story of progress."
+    ],
+    role: "architecture, data modelling, front-end",
+    repo: "impact-dash",
   },
+  {
+    title: "greenchic.store",
+    subtitle: "sustainable commerce experiment",
+    description: [
+      "Concept + build for a store that foregrounds sustainability and impact in everyday purchasing.",
+      "Used as a sandbox to explore green consumer UX and impact messaging."
+    ],
+    role: "founder, product, front-end",
+    link: "https://greenchic.store",
+    linkText: "greenchic.store",
+    comingSoon: true,
+  },
+  {
+    title: "african-commodity-markets",
+    subtitle: "prediction & RWA experiments",
+    description: [
+      "Experimenting with agriculture, prediction markets, and RWAs for African commodity markets.",
+      "Exploring how better price signals could support farmers, MSMEs, and local resilience."
+    ],
+    role: "protocol design, TypeScript, research",
+    repo: "african-commodity-markets",
+  },
+  {
+    title: "finance",
+    subtitle: "AI-powered financial consulting",
+    description: [
+      "Built an AI layer to streamline financial consulting workflows for small businesses.",
+      "Focused on making complex insights accessible via simple interfaces."
+    ],
+    role: "product & dev",
+    repo: "finance",
+  },
+];
+
+const experiments = [
+  { name: "sapience-dual-agent", desc: "forecasting & trading agent experiments" },
+  { name: "ai-partner-generator", desc: "playful agent to simulate cofounders/partners" },
+  { name: "v0-gcse-student-wellbeing-app", desc: "wellbeing tooling for students" },
 ];
 
 export default function ProjectsPage() {
@@ -31,72 +86,127 @@ export default function ProjectsPage() {
     if (contentRef.current) {
       gsap.fromTo(
         contentRef.current,
-        {
-          opacity: 0,
-          y: 30,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-        }
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
       );
     }
   }, []);
 
   return (
-    <div className="min-h-screen">
-      <main ref={contentRef} className="max-w-2xl">
-        <div className="flex flex-col">
-          {workItems.map((item, index) => (
-            <BlurFade key={item.title} delay={index * 0.1}>
-              <Link
-                href={item.href}
-                className="group py-4 border-b border-gray-200 dark:border-gray-800 block hover:opacity-70 transition-opacity"
-                {...(item.href.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              >
-                <div className="flex flex-col gap-1">
-                  <span className="font-medium text-black dark:text-white">
-                    {item.title}
-                  </span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400">
-                    {item.description}
-                  </span>
+    <div className="h-[calc(100vh-120px)] overflow-hidden">
+      <main ref={contentRef} className="h-full overflow-y-auto px-6 md:px-12 lg:px-24 py-8">
+        <div className="max-w-4xl">
+          {/* Main Projects */}
+          <div className="grid gap-8 md:gap-12">
+            {projects.map((project, index) => (
+              <BlurFade key={project.title} delay={index * 0.08}>
+                <div className="border-b border-gray-200 dark:border-gray-800 pb-6">
+                  <div className="flex flex-col gap-2">
+                    <div>
+                      {project.link ? (
+                        <Link
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:opacity-70 transition-opacity"
+                        >
+                          <span className="font-medium text-black dark:text-white">{project.title}</span>
+                          <span className="text-gray-600 dark:text-gray-400"> – {project.subtitle}</span>
+                        </Link>
+                      ) : (
+                        <>
+                          <span className="font-medium text-black dark:text-white">{project.title}</span>
+                          <span className="text-gray-600 dark:text-gray-400"> – {project.subtitle}</span>
+                        </>
+                      )}
+                    </div>
+                    
+                    <div className="text-sm text-gray-600 dark:text-gray-400 space-y-2 mt-2">
+                      {project.description.map((para, i) => (
+                        <p key={i}>{para}</p>
+                      ))}
+                    </div>
+                    
+                    <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">
+                      <span className="font-medium">Role:</span> {project.role}
+                    </p>
+                    
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm mt-1">
+                      {project.link && (
+                        <Link
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-black dark:text-white underline hover:opacity-70 transition-opacity"
+                        >
+                          {project.linkText}
+                          {project.comingSoon && <span className="text-gray-500 ml-1">(coming soon)</span>}
+                        </Link>
+                      )}
+                      {project.repo && (
+                        <Link
+                          href={`https://github.com/21givenchy/${project.repo}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                        >
+                          repo: {project.repo}
+                        </Link>
+                      )}
+                      {project.repos && project.repos.map((repo, i) => (
+                        <Link
+                          key={repo}
+                          href={`https://github.com/21givenchy/${repo}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                        >
+                          {repo}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </Link>
-            </BlurFade>
-          ))}
-        </div>
-
-        <section className="mt-16">
-          <div className="flex flex-col gap-y-3">
-            <BlurFade delay={0.3}>
-              <h2 className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Skills</h2>
-            </BlurFade>
-            <div className="flex flex-wrap gap-2">
-              {[
-                'React',
-                'Next.js',
-                'TypeScript',
-                'Node.js',
-                'Python',
-                'Go',
-                'Supabase',
-                'Docker',
-                'Kubernetes',
-                'React Native',
-                'C++'
-              ].map((skill, id) => (
-                <BlurFade key={skill} delay={0.4 + id * 0.05}>
-                  <Badge variant="secondary" className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">
-                    {skill}
-                  </Badge>
-                </BlurFade>
-              ))}
-            </div>
+              </BlurFade>
+            ))}
           </div>
-        </section>
+
+          {/* Experiments Section */}
+          <BlurFade delay={0.5}>
+            <section className="mt-12">
+              <h2 className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+                Experiments
+              </h2>
+              <div className="space-y-2">
+                {experiments.map((exp) => (
+                  <div key={exp.name} className="text-sm">
+                    <Link
+                      href={`https://github.com/21givenchy/${exp.name}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-black dark:text-white hover:opacity-70 transition-opacity"
+                    >
+                      {exp.name}
+                    </Link>
+                    <span className="text-gray-600 dark:text-gray-400"> – {exp.desc}</span>
+                  </div>
+                ))}
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-4">
+                  plus many more in my{' '}
+                  <Link
+                    href="https://github.com/21givenchy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-black dark:text-white underline hover:opacity-70 transition-opacity"
+                  >
+                    GitHub lab
+                  </Link>
+                  .
+                </p>
+              </div>
+            </section>
+          </BlurFade>
+        </div>
       </main>
     </div>
   );
