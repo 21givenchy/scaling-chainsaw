@@ -13,7 +13,7 @@ export default function Header() {
         <div className="flex flex-col">
           <Link 
             href="/" 
-            className="text-lg font-medium hover:opacity-70 transition-opacity mb-4"
+            className="text-lg font-medium hover:opacity-70 transition-opacity mb-6"
           >
             Karani, <span className="italic">George</span>
           </Link>
@@ -21,11 +21,9 @@ export default function Header() {
         </div>
         
         {/* Right side - Social Links and Theme Toggle */}
-        <div className="flex flex-col items-end">
-          <div className="flex items-center gap-4 mb-2">
-            <SecondaryLinks />
-            <ThemeToggle />
-          </div>
+        <div className="flex items-start gap-4">
+          <SecondaryLinks />
+          <ThemeToggle />
         </div>
       </div>
     </header>

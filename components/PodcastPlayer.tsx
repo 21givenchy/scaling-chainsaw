@@ -91,7 +91,7 @@ export default function PodcastPlayer() {
       <div className="space-y-4">
         <div className="bg-gray-900 p-4 rounded">
           <h3 className="font-pixel text-sm mb-2">Now Playing</h3>
-          <p className="font-mono text-green-400">Sustainable Tech: Building for Impact</p>
+          <p className="font-mono text-green-400"></p>
         </div>
 
         <div className="flex items-center justify-center gap-4">

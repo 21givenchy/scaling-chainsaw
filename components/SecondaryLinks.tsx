@@ -2,20 +2,23 @@
 
 import Link from "next/link"
 
-const secondaryLinks = [
+const topLinks = [
   { href: "https://twitter.com/21givenchy", label: "Twitter", external: true },
   { href: "https://instagram.com/21givenchy", label: "Instagram", external: true },
   { href: "https://linkedin.com/in/georgekarani", label: "LinkedIn", external: true },
   { href: "https://github.com/21givenchy", label: "Github", external: true },
   { href: "https://music.apple.com", label: "Apple Music", external: true },
+]
+
+const bottomLinks = [
   { href: "mailto:george.karani@cmxhub.com", label: "Email", external: false },
   { href: "/cv", label: "CV", external: false },
 ]
 
-export default function SecondaryLinks() {
+function LinkRow({ links }: { links: typeof topLinks }) {
   return (
-    <nav className="flex flex-wrap items-center text-sm" aria-label="Secondary navigation">
-      {secondaryLinks.map((link, index) => (
+    <div className="flex flex-wrap items-center">
+      {links.map((link, index) => (
         <span key={link.href} className="flex items-center">
           <Link
             href={link.href}
@@ -26,13 +29,22 @@ export default function SecondaryLinks() {
           >
             {link.label}
           </Link>
-          {index < secondaryLinks.length - 1 && (
-            <span className="mx-1 text-gray-400 dark:text-gray-600" aria-hidden="true">
+          {index < links.length - 1 && (
+            <span className="mx-1.5 text-gray-400 dark:text-gray-600" aria-hidden="true">
               •
             </span>
           )}
         </span>
       ))}
+    </div>
+  )
+}
+
+export default function SecondaryLinks() {
+  return (
+    <nav className="flex flex-col gap-1 text-sm" aria-label="Secondary navigation">
+      <LinkRow links={topLinks} />
+      <LinkRow links={bottomLinks} />
     </nav>
   )
 }
