@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, ReactNode } from 'react';
+import { useRef, ReactNode } from 'react';
 import { motion, useScroll, useSpring, useTransform, useVelocity } from 'framer-motion';
 
 interface ScrollVelocityProps {
@@ -26,7 +26,7 @@ export default function ScrollVelocity({
     stiffness: 400,
   });
 
-  const velocityFactor = useTransform(
+  useTransform(
     smoothVelocity,
     [0, 1000],
     [0, 5],
