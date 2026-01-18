@@ -6,9 +6,9 @@ import { notFound } from "next/navigation"
 export default async function CategoryPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const slug = params.slug;
+  const { slug } = await params;
   const category = slug.charAt(0).toUpperCase() + slug.slice(1);
   const categoryPosts = posts.filter((post) => post.category.toLowerCase() === slug);
 
