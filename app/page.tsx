@@ -1,9 +1,8 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Link from 'next/link';
 import gsap from 'gsap';
-import NavLinks from '@/components/NavLinks';
+import Header from '@/components/Header';
 import DesktopIcons from '@/components/DesktopIcons';
 
 export default function Home() {
@@ -49,48 +48,17 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-full bg-background text-foreground flex flex-col">
-      {/* Navigation Bar */}
-      <nav className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm" ref={navRef}>
-        <div className="max-w-7xl mx-auto px-6 md:px-8 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="font-haas text-base md:text-lg font-medium text-foreground hover:text-muted-foreground transition-colors duration-200"
-          >
-            George Karani
-          </Link>
-          <Link
-            href="/"
-            className="text-sm md:text-base text-muted-foreground hover:text-foreground transition-colors duration-200 flex items-center gap-2"
-          >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-            Back
-          </Link>
-        </div>
-      </nav>
+      {/* Header */}
+      <div ref={navRef}>
+        <Header />
+      </div>
 
       {/* Main Content */}
       <div className="flex-1 overflow-auto" ref={contentRef}>
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16">
-          {/* Navigation Links and Desktop Icons */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 mb-12">
-            <div className="md:col-span-2">
-              <NavLinks />
-            </div>
-            <div className="md:col-span-3">
-              <DesktopIcons />
-            </div>
+          {/* Desktop Icons */}
+          <div className="mb-12">
+            <DesktopIcons />
           </div>
 
         {/* Main Grid Layout */}
