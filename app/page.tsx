@@ -98,9 +98,7 @@ export default function Home() {
 
               {/* About Section */}
               <div className="mb-12">
-                <p className="text-base md:text-lg leading-relaxed text-muted-foreground font-light mb-4">
-                  I partner with mission-driven organizations to build products that drive real impact. With deep experience in product strategy, technology architecture, and user-centric design, I help founders and teams navigate complex challenges while maintaining focus on what matters most.
-                </p>
+
                 <p className="text-base md:text-lg leading-relaxed text-muted-foreground font-light">
                   Currently exploring opportunities at the intersection of technology, impact, and sustainable markets across Africa.
                 </p>
