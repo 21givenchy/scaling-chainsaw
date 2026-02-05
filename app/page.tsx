@@ -3,6 +3,8 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
+import NavLinks from '@/components/NavLinks';
+import DesktopIcons from '@/components/DesktopIcons';
 
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -81,6 +83,16 @@ export default function Home() {
       {/* Main Content */}
       <div className="flex-1 overflow-auto" ref={contentRef}>
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16">
+          {/* Navigation Links and Desktop Icons */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 mb-12">
+            <div className="md:col-span-2">
+              <NavLinks />
+            </div>
+            <div className="md:col-span-3">
+              <DesktopIcons />
+            </div>
+          </div>
+
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-start">
           {/* Left Column - Image and Bio */}
