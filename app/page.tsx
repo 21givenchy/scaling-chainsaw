@@ -36,7 +36,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-background text-foreground overflow-hidden">
+    <div className="min-h-screen w-full bg-background text-foreground overflow-hidden" ref={contentRef}>
       <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16">
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-start">
