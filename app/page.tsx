@@ -1,15 +1,25 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import gsap from 'gsap';
 
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Fade in animations
+    if (navRef.current) {
+      gsap.fromTo(
+        navRef.current,
+        { opacity: 0, y: -20 },
+        { opacity: 1, y: 0, duration: 0.8, delay: 0.1 }
+      );
+    }
+
     if (contentRef.current) {
       gsap.fromTo(
         contentRef.current,
@@ -36,8 +46,41 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-background text-foreground overflow-hidden" ref={contentRef}>
-      <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16">
+    <div className="min-h-screen w-full bg-background text-foreground flex flex-col">
+      {/* Navigation Bar */}
+      <nav className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm" ref={navRef}>
+        <div className="max-w-7xl mx-auto px-6 md:px-8 py-4 flex items-center justify-between">
+          <Link
+            href="/"
+            className="font-haas text-base md:text-lg font-medium text-foreground hover:text-muted-foreground transition-colors duration-200"
+          >
+            George Karani
+          </Link>
+          <Link
+            href="/"
+            className="text-sm md:text-base text-muted-foreground hover:text-foreground transition-colors duration-200 flex items-center gap-2"
+          >
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+            Back
+          </Link>
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <div className="flex-1 overflow-auto" ref={contentRef}>
+        <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16">
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-start">
           {/* Left Column - Image and Bio */}
@@ -46,8 +89,8 @@ export default function Home() {
             <div className="w-48 md:w-56 mb-6 md:mb-8">
               <div className="aspect-square bg-secondary rounded-lg overflow-hidden shadow-lg">
                 <img
-                  src="/placeholder.svg?height=400&width=400"
-                  alt="Profile"
+                  src="/george.jpeg"
+                  alt="George Karani"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -71,7 +114,7 @@ export default function Home() {
             {/* Main Intro */}
             <div className="mb-12">
               <p className="text-xl md:text-2xl leading-relaxed font-sans text-foreground font-light tracking-wide">
-                Product & impact partner for mission‑driven organisations.
+                Partnering with mission-driven organizations to build impactful products.
               </p>
             </div>
 
@@ -149,6 +192,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
