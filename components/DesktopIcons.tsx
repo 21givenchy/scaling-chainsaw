@@ -1,5 +1,5 @@
 import RetroWindow from "./RetroWindow"
-import { Github, Twitter, Linkedin, Mail } from "lucide-react"
+import { Github, Twitter, Linkedin, Mail, MessageCircle } from "lucide-react"
 
 export default function DesktopIcons() {
   const socials = [
@@ -22,6 +22,16 @@ export default function DesktopIcons() {
       icon: Mail,
       label: "Email",
       href: "mailto:george@frontforumfocus.com",
+    },
+    {
+      icon: MessageCircle,
+      label: "Discord",
+      href: "https://discord.gg/PH4jtued4b",
+    },
+    {
+      icon: MessageCircle,
+      label: "WhatsApp",
+      href: "https://chat.whatsapp.com/IPyovK0eXwoKFdfUlpCMOA",
     },
   ]
 
