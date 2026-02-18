@@ -5,45 +5,83 @@ import gsap from 'gsap';
 import VideoCarousel from '@/components/VideoCarousel';
 import VideoModal from '@/components/VideoModal';
 
-const YOUTUBE_VIDEOS = [
+// --- Fundraising & Startup Series ---
+const FUNDRAISING_VIDEOS = [
   {
-    id: 'dQw4w9WgXcQ',
-    title: 'Building in Public: The frontforumfocus Journey',
-    thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
+    id: 'PZoz8zfmhq0',
+    title: 'From Founder to Fundraiser',
+    thumbnail: 'https://img.youtube.com/vi/PZoz8zfmhq0/maxresdefault.jpg',
+    category: 'Fundraising',
   },
   {
-    id: 'jNQXAC9IVRw',
-    title: 'Community-Led Growth in East Africa',
-    thumbnail: 'https://img.youtube.com/vi/jNQXAC9IVRw/maxresdefault.jpg',
+    id: 'CexI7yTq4gE',
+    title: "Fundraising in Africa's Digital Age",
+    thumbnail: 'https://img.youtube.com/vi/CexI7yTq4gE/maxresdefault.jpg',
+    category: 'Fundraising',
   },
   {
-    id: '9bZkp7q19f0',
-    title: 'Tech Ecosystem Conversations: Nairobi Edition',
-    thumbnail: 'https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg',
+    id: 'NUiwRU_OEKA',
+    title: 'Tech for Startups: Webinar with Zoho',
+    thumbnail: 'https://img.youtube.com/vi/NUiwRU_OEKA/maxresdefault.jpg',
+    category: 'Tech',
   },
   {
-    id: 'kJQP7kiw5Fk',
-    title: 'Startup Stories: From Idea to Impact',
-    thumbnail: 'https://img.youtube.com/vi/kJQP7kiw5Fk/maxresdefault.jpg',
-  },
-  {
-    id: 'RgKAFK5djSk',
-    title: 'The Future of African Innovation',
-    thumbnail: 'https://img.youtube.com/vi/RgKAFK5djSk/maxresdefault.jpg',
-  },
-  {
-    id: 'OPf0YbXqDm0',
-    title: 'Builders & Founders: Late Night Sessions',
-    thumbnail: 'https://img.youtube.com/vi/OPf0YbXqDm0/maxresdefault.jpg',
+    id: 'tKwVieXn-BI',
+    title: 'All Star Pitch Battle',
+    thumbnail: 'https://img.youtube.com/vi/tKwVieXn-BI/maxresdefault.jpg',
+    category: 'Events',
   },
 ];
+
+// --- frontforumfocus Podcast Episodes ---
+const PODCAST_VIDEOS = [
+  {
+    id: 'USR50RCZXXM',
+    title: 'frontforumfocus Podcast Ep. 1',
+    thumbnail: 'https://img.youtube.com/vi/USR50RCZXXM/maxresdefault.jpg',
+    category: 'Podcast',
+  },
+  {
+    id: 'uuwZycpdkfQ',
+    title: 'frontforumfocus Podcast Ep. 2',
+    thumbnail: 'https://img.youtube.com/vi/uuwZycpdkfQ/maxresdefault.jpg',
+    category: 'Podcast',
+  },
+  {
+    id: '-BCzAIEDlUc',
+    title: 'frontforumfocus Podcast Ep. 3',
+    thumbnail: 'https://img.youtube.com/vi/-BCzAIEDlUc/maxresdefault.jpg',
+    category: 'Podcast',
+  },
+  {
+    id: 'ZLiS7VrG3S8',
+    title: 'Podcast with OiEdu',
+    thumbnail: 'https://img.youtube.com/vi/ZLiS7VrG3S8/maxresdefault.jpg',
+    category: 'Podcast',
+  },
+  {
+    id: 'zexxrV4c9wY',
+    title: 'Awari Collective: Impact Conversation',
+    thumbnail: 'https://img.youtube.com/vi/zexxrV4c9wY/maxresdefault.jpg',
+    category: 'Impact',
+  },
+  {
+    id: 'CDdree8PcIE',
+    title: 'Future of Energy & Sustainability',
+    thumbnail: 'https://img.youtube.com/vi/CDdree8PcIE/maxresdefault.jpg',
+    category: 'Sustainability',
+  },
+];
+
+const ALL_VIDEOS = [...FUNDRAISING_VIDEOS, ...PODCAST_VIDEOS];
 
 export default function PodcastPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
   const spotifyRef = useRef<HTMLDivElement>(null);
-  const [selectedVideo, setSelectedVideo] = useState<typeof YOUTUBE_VIDEOS[0] | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<typeof ALL_VIDEOS[0] | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
@@ -59,6 +97,9 @@ export default function PodcastPage() {
     }
     if (spotifyRef.current) {
       tl.fromTo(spotifyRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.2');
+    }
+    if (gridRef.current) {
+      tl.fromTo(gridRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.2');
     }
   }, []);
 
@@ -127,13 +168,13 @@ export default function PodcastPage() {
         <div className="border-t border-border" />
       </div>
 
-      {/* Video Carousel Section */}
+      {/* Podcast Episodes Carousel */}
       <div ref={carouselRef} className="py-12 md:py-16">
         <div className="px-6 md:px-8 max-w-7xl mx-auto mb-8">
           <div className="flex items-end justify-between">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-sans mb-2">Episodes</p>
-              <h2 className="font-display text-2xl md:text-3xl text-foreground">Latest from YouTube</h2>
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-sans mb-2">Podcast</p>
+              <h2 className="font-display text-2xl md:text-3xl text-foreground">frontforumfocus episodes</h2>
             </div>
             <a
               href="https://www.youtube.com/@frontforumfocus"
@@ -141,14 +182,12 @@ export default function PodcastPage() {
               rel="noopener noreferrer"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors font-sans hidden md:block"
             >
-              View all
+              View all on YouTube
             </a>
           </div>
         </div>
-
-        {/* Full-width carousel */}
         <div className="pl-6 md:pl-8">
-          <VideoCarousel videos={YOUTUBE_VIDEOS} onSelect={setSelectedVideo} />
+          <VideoCarousel videos={PODCAST_VIDEOS} onSelect={setSelectedVideo} />
         </div>
       </div>
 
@@ -157,22 +196,62 @@ export default function PodcastPage() {
         <div className="border-t border-border" />
       </div>
 
-      {/* Spotify Embed Section */}
-      <div ref={spotifyRef} className="px-6 md:px-8 py-12 md:py-16 max-w-7xl mx-auto">
-        <div className="mb-8">
-          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-sans mb-2">Listen</p>
-          <h2 className="font-display text-2xl md:text-3xl text-foreground">On Spotify</h2>
+      {/* Fundraising & Startup Series Carousel */}
+      <div ref={spotifyRef} className="py-12 md:py-16">
+        <div className="px-6 md:px-8 max-w-7xl mx-auto mb-8">
+          <div className="flex items-end justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-sans mb-2">Series</p>
+              <h2 className="font-display text-2xl md:text-3xl text-foreground">Fundraising & startup battles</h2>
+            </div>
+          </div>
         </div>
-        <div className="rounded-xl overflow-hidden">
-          <iframe
-            src="https://open.spotify.com/embed/episode/1S5RsW74i7H4QrqCgVrojK?theme=0"
-            width="100%"
-            height="352"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-            className="rounded-xl"
-            title="frontforumfocus on Spotify"
-          />
+        <div className="pl-6 md:pl-8">
+          <VideoCarousel videos={FUNDRAISING_VIDEOS} onSelect={setSelectedVideo} />
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="px-6 md:px-8 max-w-7xl mx-auto">
+        <div className="border-t border-border" />
+      </div>
+
+      {/* All Episodes Grid */}
+      <div ref={gridRef} className="px-6 md:px-8 py-12 md:py-16 max-w-7xl mx-auto">
+        <div className="mb-8">
+          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-sans mb-2">Browse</p>
+          <h2 className="font-display text-2xl md:text-3xl text-foreground">All episodes</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          {ALL_VIDEOS.map((video) => (
+            <button
+              key={video.id}
+              onClick={() => setSelectedVideo(video)}
+              className="group relative aspect-video rounded-xl overflow-hidden bg-secondary focus:outline-none focus:ring-2 focus:ring-foreground/20 text-left"
+            >
+              <img
+                src={video.thumbnail}
+                alt={video.title}
+                crossOrigin="anonymous"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors duration-300 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-full bg-background/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100">
+                  <svg className="w-6 h-6 text-foreground ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                <span className="inline-block px-2 py-0.5 rounded-full bg-background/20 backdrop-blur-sm text-[10px] uppercase tracking-wider text-white/80 font-sans mb-1.5">
+                  {video.category}
+                </span>
+                <p className="text-white text-sm font-sans font-medium leading-snug line-clamp-2">
+                  {video.title}
+                </p>
+              </div>
+            </button>
+          ))}
         </div>
       </div>
 
