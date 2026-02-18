@@ -2,25 +2,13 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import Header from '@/components/Header';
-import DesktopIcons from '@/components/DesktopIcons';
 
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-  const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Fade in animations
-    if (navRef.current) {
-      gsap.fromTo(
-        navRef.current,
-        { opacity: 0, y: -20 },
-        { opacity: 1, y: 0, duration: 0.8, delay: 0.1 }
-      );
-    }
-
     if (contentRef.current) {
       gsap.fromTo(
         contentRef.current,
@@ -47,16 +35,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-background text-foreground flex flex-col">
-      {/* Header */}
-      <div ref={navRef}>
-        <Header />
-      </div>
-
+    <div className="min-h-screen w-full bg-background text-foreground">
       {/* Main Content */}
-      <div className="flex-1 overflow-auto" ref={contentRef}>
+      <div ref={contentRef}>
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16">
-          {/* Desktop Icons */}
 
 
           {/* Main Grid Layout */}
