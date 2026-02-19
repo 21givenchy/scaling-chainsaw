@@ -70,6 +70,9 @@ html, body {
     --chart-3: 0 0% 65%;
     --chart-4: 0 0% 80%;
     --chart-5: 0 0% 90%;
+    /* Fallback font configuration when Google Fonts are unavailable */
+    --font-poppins: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    --font-gruppo: Georgia, 'Times New Roman', serif;
   }
   
   .dark {
