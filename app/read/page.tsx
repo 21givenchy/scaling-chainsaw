@@ -111,7 +111,7 @@ const TRILOGY_ARTICLES = [
     date: 'November 19, 2025',
     edition: 'Edition 2 of 3',
     excerpt:
-      'Community is no longer a backdrop to marketing—it's becoming the architecture of trust itself. How online spaces, physical gatherings, and peer validation are reshaping how we measure impact and build belief.',
+      'Community is no longer a backdrop to marketing—it\'s becoming the architecture of trust itself. How online spaces, physical gatherings, and peer validation are reshaping how we measure impact and build belief.',
     tags: ['Community', 'Trust', 'Marketing', 'Digital'],
     content: `<h2>Where Will Trust Actually Be Built in 2030</h2>
 <p><strong>Edition 2 of 3, The Trust Series</strong></p>
@@ -242,7 +242,7 @@ export default function ReadPage() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-lg md:text-xl text-muted-foreground font-light max-w-2xl leading-relaxed mb-8"
         >
-          A limited 3-part series exploring trust, community, and the future of impact investing. Plus essays on product, building, and Africa's startup ecosystem.
+          A limited 3-part series exploring trust, community, and the future of impact investing. Plus essays on product, building, and Africa&apos;s startup ecosystem.
         </motion.p>
 
         {/* Subscribe CTA */}
@@ -290,7 +290,7 @@ export default function ReadPage() {
         </motion.h2>
 
         <div className="space-y-8">
-          {TRILOGY_ARTICLES.map((article, idx) => (
+          {TRILOGY_ARTICLES.map((article) => (
             <motion.button
               key={article.id}
               initial={{ opacity: 0, y: 20 }}
