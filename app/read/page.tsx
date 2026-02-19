@@ -170,8 +170,9 @@ const OTHER_ARTICLES = [
       'Exploring the intersection of technology and social impact across African markets. How mission-driven organizations can leverage product thinking to drive sustainable change at scale.',
     date: 'Jan 2025',
     readTime: '6 min',
-    link: 'https://21givenchy.substack.com/',
+    link: '#',
     tags: ['Impact', 'Product'],
+    upcoming: true,
   },
   {
     title: 'The Case for Community-Led Growth in Africa',
@@ -179,8 +180,9 @@ const OTHER_ARTICLES = [
       'Why the most successful startups on the continent are building communities first and products second. Lessons from Startup Grind Kabarak and CMX Nairobi.',
     date: 'Dec 2024',
     readTime: '5 min',
-    link: 'https://21givenchy.substack.com/',
+    link: '#',
     tags: ['Community', 'Growth'],
+    upcoming: true,
   },
   {
     title: 'Lessons from Hosting 7+ Tech Events in Kenya',
@@ -188,8 +190,29 @@ const OTHER_ARTICLES = [
       'What I learned about bringing builders together, creating meaningful connections, and the operational side of running community events across three cities.',
     date: 'Nov 2024',
     readTime: '4 min',
-    link: 'https://21givenchy.substack.com/',
+    link: '#',
     tags: ['Events', 'Community'],
+    upcoming: true,
+  },
+  {
+    title: 'Winning the Polygon Akindo Grand: Bringing Commodities Onchain',
+    excerpt:
+      'How AfriFutures won the Polygon Akindo grand prize by building infrastructure to bring African commodity markets onchain—and what it means for the future of trade on the continent.',
+    date: 'Coming Soon',
+    readTime: '5 min',
+    link: '#',
+    tags: ['Web3', 'Commodities', 'Polygon'],
+    upcoming: true,
+  },
+  {
+    title: 'Joining Omi Wearable as a ChatGPT Partner',
+    excerpt:
+      'What it means to be selected as an Omi wearable ChatGPT partner—building at the intersection of ambient AI, personal productivity, and Africa\'s builder ecosystem.',
+    date: 'Coming Soon',
+    readTime: '4 min',
+    link: '#',
+    tags: ['AI', 'Wearable', 'Omi'],
+    upcoming: true,
   },
 ]
 
@@ -348,22 +371,21 @@ export default function ReadPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {OTHER_ARTICLES.map((article, i) => (
-            <motion.a
+            <motion.div
               key={article.title}
-              href={article.link}
-              target="_blank"
-              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-6 rounded-xl border border-border hover:border-foreground/30 hover:bg-secondary/20 transition-all duration-300 group"
+              className="p-6 rounded-xl border border-border bg-secondary/10 group"
             >
               <div className="flex items-start justify-between gap-3 mb-3">
                 <span className="text-xs text-muted-foreground font-light">{article.date}</span>
-                <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                <span className="inline-block px-2 py-0.5 rounded-full bg-secondary text-xs text-muted-foreground font-medium tracking-wide">
+                  Upcoming
+                </span>
               </div>
-              <h3 className="text-lg font-light text-foreground mb-3 leading-snug group-hover:text-foreground/80 transition-colors">
+              <h3 className="text-lg font-light text-foreground mb-3 leading-snug">
                 {article.title}
               </h3>
               <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
@@ -379,7 +401,7 @@ export default function ReadPage() {
                 </div>
                 <span className="text-xs text-muted-foreground whitespace-nowrap ml-2">{article.readTime}</span>
               </div>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </section>

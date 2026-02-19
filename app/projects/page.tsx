@@ -4,6 +4,9 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { BlurFade } from "@/components/magicui/blur-fade"
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -81,26 +84,75 @@ const experiments = [
 
 export default function ProjectsPage() {
   const contentRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    if (contentRef.current) {
-      gsap.fromTo(
-        contentRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
-      );
-    }
+    const ctx = gsap.context(() => {
+      // Clip-path reveal on the heading — text slides up from below, jasonbergh-style
+      if (headingRef.current) {
+        gsap.fromTo(
+          headingRef.current,
+          { clipPath: 'inset(100% 0% 0% 0%)', opacity: 0, y: 20 },
+          {
+            clipPath: 'inset(0% 0% 0% 0%)',
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: 'power3.out',
+            delay: 0.1,
+          }
+        );
+      }
+
+      // Staggered scroll-triggered reveal for each project row
+      projectRefs.current.forEach((el, i) => {
+        if (!el) return;
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 40, clipPath: 'inset(0% 0% 100% 0%)' },
+          {
+            opacity: 1,
+            y: 0,
+            clipPath: 'inset(0% 0% 0% 0%)',
+            duration: 0.7,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              scroller: contentRef.current,
+              start: 'top 90%',
+              toggleActions: 'play none none none',
+            },
+            delay: i < 2 ? i * 0.12 : 0,
+          }
+        );
+      });
+    }, contentRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
     <div className="h-[calc(100vh-120px)] overflow-hidden">
       <main ref={contentRef} className="h-full overflow-y-auto px-6 md:px-12 lg:px-24 py-8">
         <div className="max-w-4xl">
+          <h1
+            ref={headingRef}
+            className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-10"
+            style={{ clipPath: 'inset(100% 0% 0% 0%)' }}
+          >
+            Projects
+          </h1>
+
           {/* Main Projects */}
           <div className="grid gap-8 md:gap-12">
             {projects.map((project, index) => (
               <BlurFade key={project.title} delay={index * 0.08}>
-                <div className="border-b border-gray-200 dark:border-gray-800 pb-6">
+                <div
+                  ref={(el) => { projectRefs.current[index] = el; }}
+                  className="border-b border-gray-200 dark:border-gray-800 pb-6"
+                  style={{ opacity: 0 }}
+                >
                   <div className="flex flex-col gap-2">
                     <div>
                       {project.link ? (
@@ -153,7 +205,7 @@ export default function ProjectsPage() {
                           repo: {project.repo}
                         </Link>
                       )}
-                      {project.repos && project.repos.map((repo, i) => (
+                      {project.repos && project.repos.map((repo) => (
                         <Link
                           key={repo}
                           href={`https://github.com/21givenchy/${repo}`}
