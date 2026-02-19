@@ -8,8 +8,8 @@ import CommunityBadge from '@/components/CommunityBadge'
 const pastEvents = [
   {
     title: 'Omi Builder Sprint Nairobi',
-    date: '2024',
-    location: 'Nairobi, Kenya',
+    date: 'Jan 15, 2026',
+    location: 'Qhala, Nairobi, Kenya',
     description:
       'An intensive builder sprint bringing together developers and creators to prototype and ship products using Omi tools and infrastructure.',
     link: 'https://luma.com/1y2axewo',
@@ -17,7 +17,17 @@ const pastEvents = [
   },
   {
     title: 'Cowork with ETHGlobal in Nairobi',
-    date: '2024',
+    date: 'Nov 27, 2025',
+    location: 'Nairobi, Kenya',
+    description:
+      'A collaborative coworking session in partnership with ETHGlobal, connecting Ethereum builders and web3 enthusiasts in the Nairobi ecosystem.',
+    link: 'https://luma.com/ethglobal-cowork-nairobi',
+    cohost: 'ETHGlobal',
+    type: 'past' as const,
+  },
+  {
+    title: 'Cowork with ETHGlobal in Nairobi',
+    date: 'Sep 18, 2025',
     location: 'Nairobi, Kenya',
     description:
       'A collaborative coworking session in partnership with ETHGlobal, connecting Ethereum builders and web3 enthusiasts in the Nairobi ecosystem.',
@@ -47,7 +57,7 @@ const pastEvents = [
   },
   {
     title: 'Boost Your Customer Management with Zoho CRM Plus',
-    date: '2024',
+    date: 'Sep 9, 2025',
     location: 'Kabarak University, Kenya',
     description:
       'A hands-on workshop teaching early-stage founders and students how to leverage Zoho CRM Plus for efficient customer relationship management.',
@@ -57,7 +67,7 @@ const pastEvents = [
   },
   {
     title: 'Stories from Early Stage Builders',
-    date: '2024',
+    date: 'Jan 23, 2025',
     location: 'Nairobi, Kenya',
     description:
       'An intimate storytelling event with Waiter Call and virtual story alumni and pitchers from the All Star Pitch event. Co-hosted between CMX Nairobi and Startup Grind Kabarak.',
