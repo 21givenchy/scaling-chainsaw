@@ -67,6 +67,38 @@ const pastEvents = [
   },
 ]
 
+const upcomingEvents = [
+  {
+    title: 'Omi Hackathon Nairobi',
+    date: 'TBD',
+    location: 'Nairobi, Kenya',
+    description:
+      'A dedicated hackathon for builders to create apps and integrations on the Omi wearable platform. Bringing together AI and hardware enthusiasts in the Nairobi ecosystem.',
+    link: '#',
+    type: 'upcoming' as const,
+  },
+  {
+    title: '2-Day Impact Summit',
+    date: 'November 2026',
+    location: 'Nairobi, Kenya',
+    description:
+      'A two-day summit bringing together founders, investors, and community builders focused on impact-driven work across Africa.',
+    link: '#',
+    type: 'upcoming' as const,
+  },
+  {
+    title: 'Digital Marketing in the Age of AI',
+    date: 'Mar 5, 2026',
+    location: 'Nairobi, Kenya',
+    description:
+      'A collaborative event with Arctic Tundra exploring how AI is reshaping digital marketing strategy, content creation, and growth for African startups.',
+    link: '#',
+    cohost: 'Arctic Tundra',
+    type: 'upcoming' as const,
+  },
+]
+
+
 const communities = [
   { name: 'Startup Grind Kabarak', link: 'https://www.startupgrind.com/kabarak/' },
   { name: 'CMX Nairobi', link: 'https://events.cmxhub.com/nairobi/' },
@@ -147,6 +179,28 @@ export default function EventsPage() {
           ))}
         </div>
       </section>
+
+      {/* Upcoming Events */}
+      <section className="max-w-5xl mx-auto px-6 md:px-8 pb-12 md:pb-16">
+        <motion.h2
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-sm uppercase tracking-widest text-muted-foreground mb-8 font-light"
+        >
+          Upcoming Events
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {upcomingEvents.map((event, i) => (
+            <EventCard key={event.title} {...event} index={i} />
+          ))}
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="max-w-5xl mx-auto px-6 md:px-8 pb-8">
+        <div className="border-t border-border" />
+      </div>
 
       {/* Past Events */}
       <section className="max-w-5xl mx-auto px-6 md:px-8 pb-16 md:pb-24">

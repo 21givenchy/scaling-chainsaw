@@ -204,6 +204,16 @@ const OTHER_ARTICLES = [
     tags: ['Web3', 'Commodities', 'Polygon'],
     upcoming: true,
   },
+  {
+    title: 'Joining Omi Wearable as a ChatGPT Partner',
+    excerpt:
+      'What it means to be selected as an Omi wearable ChatGPT partner—building at the intersection of ambient AI, personal productivity, and Africa\'s builder ecosystem.',
+    date: 'Coming Soon',
+    readTime: '4 min',
+    link: '#',
+    tags: ['AI', 'Wearable', 'Omi'],
+    upcoming: true,
+  },
 ]
 
 export default function ReadPage() {
