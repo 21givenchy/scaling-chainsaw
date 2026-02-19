@@ -26,18 +26,8 @@ const pastEvents = [
     type: 'past' as const,
   },
   {
-    title: 'Cowork with ETHGlobal in Nairobi',
-    date: 'Sep 18, 2025',
-    location: 'Nairobi, Kenya',
-    description:
-      'A collaborative coworking session in partnership with ETHGlobal, connecting Ethereum builders and web3 enthusiasts in the Nairobi ecosystem.',
-    link: 'https://luma.com/ethglobal-cowork-nairobi',
-    cohost: 'ETHGlobal',
-    type: 'past' as const,
-  },
-  {
     title: 'AI & Tech Startup Battle Kenya',
-    date: '2024',
+    date: 'Nov 14, 2025',
     location: 'Kenya',
     description:
       'A competitive startup pitch event focused on AI and technology ventures, hosted in partnership with NextUnicorn Fund to discover the next wave of Kenyan tech startups.',
@@ -47,7 +37,7 @@ const pastEvents = [
   },
   {
     title: 'All Star Pitch Battle Kabarak',
-    date: '2024',
+    date: 'Sep 18, 2025',
     location: 'Kabarak University, Kenya',
     description:
       'The flagship pitch competition hosted with Startup Grind Kabarak, showcasing the best student and early-stage founders in the region.',
