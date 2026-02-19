@@ -70,6 +70,7 @@ const pastEvents = [
 const communities = [
   { name: 'Startup Grind Kabarak', link: 'https://www.startupgrind.com/kabarak/' },
   { name: 'CMX Nairobi', link: 'https://events.cmxhub.com/nairobi/' },
+  { name: 'Front Forum Focus', link: 'https://frontforumfocus.com' },
 ]
 
 export default function EventsPage() {
@@ -125,7 +126,7 @@ export default function EventsPage() {
             <AnimatedCounter end={7} suffix="+" label="Events Hosted" />
             <AnimatedCounter end={3} label="Cities" />
             <AnimatedCounter end={500} suffix="+" label="Community Reach" />
-            <AnimatedCounter end={2} label="Communities" />
+            <AnimatedCounter end={3} label="Communities" />
           </div>
         </div>
       </section>
