@@ -1,20 +1,15 @@
 import type React from "react"
-import { Poppins, Gruppo } from "next/font/google"
 import "./globals.css"
 import Providers from "@/components/Providers"
 import Header from "@/components/Header"
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
-})
-
-const gruppo = Gruppo({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-gruppo",
-})
+// Fallback font configuration when Google Fonts are unavailable
+const fontStyles = `
+  :root {
+    --font-poppins: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    --font-gruppo: Georgia, 'Times New Roman', serif;
+  }
+`
 
 export const metadata = {
   title: "George Karani – Product & Impact Partner",
@@ -27,7 +22,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${poppins.variable} ${gruppo.variable}`}>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
+      </head>
       <body className="min-h-screen overflow-x-hidden">
         <Providers>
           <Header />
