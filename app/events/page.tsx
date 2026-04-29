@@ -69,6 +69,24 @@ const pastEvents = [
 
 const upcomingEvents = [
   {
+    title: 'Hardware Builder Sprint',
+    date: 'Every Friday',
+    location: 'Nairobi, Kenya',
+    description:
+      'A recurring weekly sprint for hardware builders and innovators. Join our community every Friday to prototype, collaborate, and build cutting-edge hardware solutions.',
+    link: 'https://luma.com/svzzq68h',
+    type: 'upcoming' as const,
+  },
+  {
+    title: 'The Agents',
+    date: 'Apr 30, 2026',
+    location: 'Nairobi, Kenya',
+    description:
+      'An exclusive event bringing together AI agents builders and enthusiasts. Explore the latest in agent technology and connect with innovators shaping the future of autonomous AI.',
+    link: 'https://luma.com/ko0gh8jl',
+    type: 'upcoming' as const,
+  },
+  {
     title: 'Omi Hackathon Nairobi',
     date: 'TBD',
     location: 'Nairobi, Kenya',
