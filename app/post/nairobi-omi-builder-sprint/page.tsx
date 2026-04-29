@@ -10,7 +10,7 @@ const POST = {
   author: "George Karani & Team",
   date: "2026-04-28",
   durationSeconds: 1403,
-  thumbnailUrl: "https://img.youtube.com/vi_webp/PoHW57y2Jqk/hqdefault.webp",
+  thumbnailUrl: "/omi-hack.jpeg",
   tags: [
     "Omi Builder Sprint",
     "Nairobi Tech",
@@ -76,76 +76,91 @@ const POST = {
 
 export default function BlogPost() {
   return (
-    <article className="prose prose-invert prose-green max-w-none">
-      <h1 className="font-pixel">{POST.title}</h1>
-      <span className="inline-block px-2 py-1 bg-green-600 text-black text-sm font-mono rounded mb-4">
-        Blog
-      </span>
-      <div className="mb-6">
-        <p className="text-muted-foreground mb-6">
-          {POST.subtitle}
-        </p>
-        <div className="mb-6">
-          <div className="flex flex-wrap gap-2 mb-4">
-            {POST.tags.map((tag) => (
-              <span
-                key={tag}
-                className="inline-block px-2 py-1 rounded text-xs bg-secondary/20 text-muted-foreground"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <div className="flex items-center gap-4 text-sm text-muted-foreground/70">
-            <span>{POST.date}</span>
-            <span>•</span>
-            <span>{POST.durationSeconds / 60} min read</span>
-            <span>•</span>
-            <span>by {POST.author}</span>
-          </div>
-        </div>
-        <Image
-          src={POST.thumbnailUrl}
-          alt={POST.title}
-          width={1200}
-          height={630}
-          className="w-full h-64 object-cover rounded-lg mb-8"
-        />
-        {POST.sections.map((section, idx) => (
-          <div key={idx} className="mb-8">
-            <h2 className="text-2xl font-light mb-4 border-b border-border pb-2">
-              {section.heading}
-            </h2>
-            <p className="mb-4 text-lg leading-relaxed">
-              {section.body}
+    <div className="min-h-screen bg-background text-foreground">
+      <main className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16">
+        <article>
+          <h1 className="font-pixel text-4xl sm:text-5xl font-bold mb-4">{POST.title}</h1>
+          <span className="inline-block px-3 py-1 bg-green-600 text-black text-sm font-mono rounded mb-6">
+            Blog
+          </span>
+
+          <div className="mb-8">
+            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              {POST.subtitle}
             </p>
-            {section.keyPoints && (
-              <div className="bg-secondary/10 border-l-4 border-green-600 pl-4 my-6">
-                <ul className="space-y-2">
-                  {section.keyPoints.map((point, pointIdx) => (
-                    <li key={pointIdx} className="font-mono text-base">
-                      {point}
-                    </li>
-                  ))}
-                </ul>
+
+            <div className="mb-6">
+              <div className="flex flex-wrap gap-2 mb-4">
+                {POST.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-block px-3 py-1 rounded text-xs bg-secondary/20 text-muted-foreground hover:bg-secondary/40 transition-colors"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-            )}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-muted-foreground/70">
+                <span>{POST.date}</span>
+                <span className="hidden sm:inline">•</span>
+                <span>{Math.round(POST.durationSeconds / 60)} min read</span>
+                <span className="hidden sm:inline">•</span>
+                <span>by {POST.author}</span>
+              </div>
+            </div>
+
+            <Image
+              src={POST.thumbnailUrl}
+              alt={POST.title}
+              width={800}
+              height={420}
+              className="w-full h-auto object-cover rounded-lg mb-10"
+              priority
+            />
+
+            {POST.sections.map((section, idx) => (
+              <div key={idx} className="mb-12">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 border-b border-border pb-3">
+                  {section.heading}
+                </h2>
+                <p className="mb-5 text-base sm:text-lg leading-relaxed text-foreground/90">
+                  {section.body}
+                </p>
+                {section.keyPoints && (
+                  <div className="bg-secondary/10 border-l-4 border-green-600 pl-6 py-4 my-6 rounded-r">
+                    <ul className="space-y-3">
+                      {section.keyPoints.map((point, pointIdx) => (
+                        <li key={pointIdx} className="text-base leading-relaxed flex gap-3">
+                          <span className="text-green-600 font-bold flex-shrink-0">•</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ))}
+
+            <div className="border-t border-border pt-10 mt-12">
+              <h3 className="text-2xl font-bold mb-4">Conclusion</h3>
+              <p className="text-base sm:text-lg leading-relaxed text-foreground/90">
+                {POST.conclusion}
+              </p>
+            </div>
+
+            <div className="mt-12 pt-8 border-t border-border">
+              <SocialShare
+                url={`https://yourdomain.com/post/${POST.id}`}
+                title={POST.title}
+              />
+            </div>
+
+            <div className="mt-12">
+              <CommentSection />
+            </div>
           </div>
-        ))}
-        <div className="border-t border-border pt-8 mt-8">
-          <h3 className="text-xl font-light mb-4">Conclusion</h3>
-          <p className="text-lg leading-relaxed text-muted-foreground">
-            {POST.conclusion}
-          </p>
-        </div>
-        <div className="mt-8 pt-6 border-t border-border">
-          <SocialShare
-            url={`https://yourdomain.com/post/${POST.id}`}
-            title={POST.title}
-          />
-        </div>
-        <CommentSection />
-      </div>
-    </article>
+        </article>
+      </main>
+    </div>
   )
 }
