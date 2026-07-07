@@ -36,6 +36,18 @@ const FUNDRAISING_VIDEOS = [
 // --- frontforumfocus Podcast Episodes ---
 const PODCAST_VIDEOS = [
   {
+    id: 'GVRhOS85R6s',
+    title: 'Why the Future of AI Will Be Led by Open Models and Low-Cost Hardware',
+    thumbnail: 'https://img.youtube.com/vi/GVRhOS85R6s/maxresdefault.jpg',
+    category: 'AI',
+  },
+  {
+    id: 'Uvp88nfPNdU',
+    title: 'How Gamification Reinvents Education for Kids',
+    thumbnail: 'https://img.youtube.com/vi/Uvp88nfPNdU/maxresdefault.jpg',
+    category: 'Education',
+  },
+  {
     id: 'USR50RCZXXM',
     title: 'frontforumfocus Podcast Ep. 1',
     thumbnail: 'https://img.youtube.com/vi/USR50RCZXXM/maxresdefault.jpg',

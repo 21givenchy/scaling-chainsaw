@@ -87,6 +87,24 @@ const upcomingEvents = [
     type: 'upcoming' as const,
   },
   {
+    title: 'CMX Nairobi Community Event',
+    date: 'Next Thursday',
+    location: 'Nairobi, Kenya',
+    description:
+      'A high-signal community gathering focused on builder collaboration and ecosystem growth within the Nairobi tech scene.',
+    link: 'https://events.cmxhub.com/e/m4wkj5/',
+    type: 'upcoming' as const,
+  },
+  {
+    title: 'World Impact Forum x World with Purpose',
+    date: 'November 2026',
+    location: 'Nairobi, Kenya',
+    description:
+      'A strategic collaboration with World Impact Forum and World with Purpose to accelerate the impact economy and verify real-world outcomes.',
+    link: '#',
+    type: 'upcoming' as const,
+  },
+  {
     title: 'Omi Hackathon Nairobi',
     date: 'TBD',
     location: 'Nairobi, Kenya',
@@ -126,49 +144,6 @@ const communities = [
 export default function EventsPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/events-hero.jpg"
-            alt="Community events"
-            className="w-full h-full object-cover opacity-30 dark:opacity-15"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
-        </div>
-
-        <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-8 pt-16 pb-24 md:pt-24 md:pb-32">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-sm uppercase tracking-widest text-muted-foreground mb-4 font-light"
-          >
-            Community & Events
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-light text-foreground leading-tight mb-6 text-balance font-display"
-          >
-            Bringing builders
-            <br />
-            together.
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground font-light max-w-2xl leading-relaxed"
-          >
-            Hosting and curating events across Kenya that connect early-stage
-            founders, developers, and community builders to learn, pitch, and
-            grow together.
-          </motion.p>
-        </div>
-      </section>
-
       {/* Animated Metrics */}
       <section className="border-y border-border bg-secondary/30">
         <div className="max-w-5xl mx-auto px-6 md:px-8 py-16 md:py-20">
@@ -180,7 +155,7 @@ export default function EventsPage() {
           </div>
         </div>
       </section>
-
+      
       {/* Communities */}
       <section className="max-w-5xl mx-auto px-6 md:px-8 py-16 md:py-20">
         <motion.h2
@@ -197,7 +172,7 @@ export default function EventsPage() {
           ))}
         </div>
       </section>
-
+      
       {/* Upcoming Events */}
       <section className="max-w-5xl mx-auto px-6 md:px-8 pb-12 md:pb-16">
         <motion.h2
@@ -214,12 +189,12 @@ export default function EventsPage() {
           ))}
         </div>
       </section>
-
+      
       {/* Divider */}
       <div className="max-w-5xl mx-auto px-6 md:px-8 pb-8">
         <div className="border-t border-border" />
       </div>
-
+      
       {/* Past Events */}
       <section className="max-w-5xl mx-auto px-6 md:px-8 pb-16 md:pb-24">
         <motion.h2

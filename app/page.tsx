@@ -7,22 +7,22 @@ import { ScrollReveal } from "@/components/ScrollReveal"
 
 const projects = [
   {
-    name: "Synthesis Markets",
-    href: "https://afrifutures.vercel.app",
-    description: "Web3 RWA financial layer for African producers. Agriculture, metals, energy.",
-    tags: ["Web3", "DeFi", "Base"],
+    name: "babyllm",
+    href: "https://github.com/21givenchy/babyllm",
+    description: "Small-scale LLM implementations focusing on efficiency. The architectural basis for found34.",
+    tags: ["AI", "LLM", "Research"],
+  },
+  {
+    name: "speech-to-sign",
+    href: "#",
+    description: "Real-time speech translation to sign language using Python and TensorFlow.",
+    tags: ["AI", "Accessibility", "ML"],
   },
   {
     name: "Greta",
     href: "https://greta.frontforumfocus.com",
-    description: "Impact measurement for changemakers. Track value of your activities.",
-    tags: ["Productivity", "AI", "Impact"],
-  },
-  {
-    name: "GCSease",
-    href: "https://gcsease.vercel.app",
-    description: "Student wellbeing app. Task-first UX for exam preparation.",
-    tags: ["EdTech", "Mobile", "Wellbeing"],
+    description: "Value-based pricing engine for specialist freelancers to decouple income from time.",
+    tags: ["Productivity", "AI", "Value-Pricing"],
   },
 ]
 
