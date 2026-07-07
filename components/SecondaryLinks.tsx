@@ -4,7 +4,6 @@ import Link from "next/link"
 
 const topLinks = [
   { href: "https://instagram.com/21givenchy", label: "Instagram", external: true },
-  { href: "https://linkedin.com/in/georgekarani", label: "LinkedIn", external: true },
   { href: "https://music.apple.com", label: "Apple Music", external: true },
 ]
 

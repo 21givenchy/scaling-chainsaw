@@ -27,11 +27,10 @@ export default function RootLayout({
               <p className="text-sm text-[var(--fg-tertiary)]">
                 © {new Date().getFullYear()} George Karani. All rights reserved.
               </p>
-              <div className="flex gap-6">
-                <a href="https://twitter.com/21givenchy" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--fg-tertiary)] hover:text-[var(--fg-brand)] transition-colors">Twitter</a>
-                <a href="https://github.com/palontologist" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--fg-tertiary)] hover:text-[var(--fg-brand)] transition-colors">GitHub</a>
-                <a href="https://linkedin.com/in/georgekarani" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--fg-tertiary)] hover:text-[var(--fg-brand)] transition-colors">LinkedIn</a>
-              </div>
+               <div className="flex gap-6">
+                 <a href="https://instagram.com/21givenchy" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--fg-tertiary)] hover:text-[var(--fg-brand)] transition-colors">Instagram</a>
+               </div>
+
             </div>
           </div>
         </footer>

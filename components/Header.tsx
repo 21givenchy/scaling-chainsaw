@@ -15,9 +15,7 @@ const navItems = [
 ]
 
 const secondaryLinks = [
-  { href: "https://twitter.com/21givenchy", label: "Twitter" },
-  { href: "https://github.com/palontologist", label: "GitHub" },
-  { href: "https://linkedin.com/in/georgekarani", label: "LinkedIn" },
+  { href: "/George Karani Resume.pdf", label: "Resume" },
 ]
 
 export default function Header() {
