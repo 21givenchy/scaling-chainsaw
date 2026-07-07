@@ -3,16 +3,15 @@
 import Link from "next/link"
 
 const topLinks = [
-  { href: "https://twitter.com/21givenchy", label: "Twitter", external: true },
   { href: "https://instagram.com/21givenchy", label: "Instagram", external: true },
   { href: "https://linkedin.com/in/georgekarani", label: "LinkedIn", external: true },
-  { href: "https://github.com/21givenchy", label: "Github", external: true },
   { href: "https://music.apple.com", label: "Apple Music", external: true },
 ]
 
 const bottomLinks = [
   { href: "mailto:george.karani@cmxhub.com", label: "Email", external: false },
   { href: "/cv", label: "CV", external: false },
+  { href: "/George Karani Resume.pdf", label: "Resume (PDF)", external: false },
 ]
 
 function LinkRow({ links }: { links: typeof topLinks }) {
