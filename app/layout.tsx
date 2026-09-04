@@ -2,20 +2,8 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Poppins, Gruppo } from "next/font/google"
 import "./globals.css"
-import Providers from "@/components/Providers"
 import Header from "@/components/Header"
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
-})
-
-const gruppo = Gruppo({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-gruppo",
-})
+import { PageLoader } from "@/components/PageLoader"
 
 const siteUrl = "https://georgekarani.com"
 
@@ -70,39 +58,41 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${poppins.variable} ${gruppo.variable}`}>
-      <body className="min-h-screen overflow-x-hidden">
-        <Providers>
-          <Header />
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <body className="min-h-screen bg-[var(--bg-primary)] text-[var(--fg-primary)] antialiased overflow-x-hidden">
+        <PageLoader />
+        <Header />
+        <main className="pt-20">
           {children}
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Person",
-                name: "George Karani",
-                url: siteUrl,
-                image: `${siteUrl}/george.jpeg`,
-                jobTitle: "Product & Impact Partner",
-                description: "Product and impact partner, founder, writer, event host, and podcast creator working with mission-driven organisations across Africa.",
-                worksFor: { "@type": "Organization", name: "frontforumfocus", url: "https://frontforumfocus.com" },
-                sameAs: [
-                  "https://21givenchy.substack.com/",
-                  "https://www.youtube.com/@frontforumfocus",
-                  "https://www.twitch.tv/21givenchy",
-                  "https://github.com/georgekarani",
-                  "https://linkedin.com/in/georgekarani",
-                  "https://chat.whatsapp.com/IPyovK0eXwoKFdfUlpCMOA",
-                  "https://discord.gg/PH4jtued4b",
-                ],
-                knowsAbout: ["Product strategy", "Impact innovation", "African startup ecosystems", "Fundraising", "Community building"],
-              }),
-            }}
-          />
-        </Providers>
+        </main>
+        <footer className="py-12 border-t border-[var(--border-primary)]">
+          <div className="container-main">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-sm text-[var(--fg-tertiary)]">
+                © {new Date().getFullYear()} George Karani. All rights reserved.
+              </p>
+              <div className="flex gap-6">
+                <a href="https://instagram.com/21givenchy" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--fg-tertiary)] hover:text-[var(--fg-brand)] transition-colors">Instagram</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "George Karani",
+              url: siteUrl,
+              image: `${siteUrl}/george.jpeg`,
+              jobTitle: "Product & Impact Partner",
+              sameAs: ["https://21givenchy.substack.com/", "https://www.youtube.com/@frontforumfocus", "https://www.twitch.tv/21givenchy", "https://github.com/georgekarani", "https://linkedin.com/in/georgekarani", "https://instagram.com/21givenchy", "https://frontforumfocus.com"],
+              knowsAbout: ["Product strategy", "Impact innovation", "African startup ecosystems", "Fundraising", "Community building"],
+            }),
+          }}
+        />
       </body>
     </html>
   )
 }
-
