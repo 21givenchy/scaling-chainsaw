@@ -153,7 +153,7 @@ export default function ProjectsPage() {
                           repo: {project.repo}
                         </Link>
                       )}
-                      {project.repos && project.repos.map((repo, i) => (
+                      {project.repos && project.repos.map((repo) => (
                         <Link
                           key={repo}
                           href={`https://github.com/21givenchy/${repo}`}

@@ -44,7 +44,11 @@ export default function VideoCarousel({ videos, onSelect }: VideoCarouselProps) 
 
   useEffect(() => {
     if (tweenRef.current) {
-      isPaused ? tweenRef.current.pause() : tweenRef.current.resume();
+      if (isPaused) {
+        tweenRef.current.pause()
+      } else {
+        tweenRef.current.resume()
+      }
     }
   }, [isPaused]);
 
